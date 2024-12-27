@@ -12,6 +12,7 @@ x86/
 out/
 
 # Visual Studio temporary files
+*.filters
 *.obj
 *.exe
 *.dll
