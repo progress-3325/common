@@ -18,8 +18,8 @@
     <ClInclude Include="include\log.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Common\src\Common\application.cpp" />
-    <ClCompile Include="Common\src\Common\log.cpp" />
+    <ClCompile Include="Common\src\application.cpp" />
+    <ClCompile Include="Common\src\log.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
