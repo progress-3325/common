@@ -9,7 +9,8 @@ workspace "Common Engine"
 	}
 
 	includedirs {
-		"include"
+		"include",
+		"include/vendor/spdlog/include"
 	}
 
 	files {
@@ -17,7 +18,8 @@ workspace "Common Engine"
 		"include/CCommon.h",
 		"include/core.h",
 		"include/entry_point.h",
-		"include/log.h"
+		"include/log.h",
+		"premake5.lua"
 	}
 
 
@@ -87,7 +89,8 @@ project "Sandbox"
 		"include/CCommon.h",
 		"include/core.h",
 		"include/entry_point.h",
-		"include/log.h"
+		"include/log.h",
+		"premake5.lua"
 	}
 
 	includedirs {
