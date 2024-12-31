@@ -8,6 +8,18 @@ workspace "Common Engine"
 		"Dist"
 	}
 
+	includedirs {
+		"include"
+	}
+
+	files {
+		"include/application.h",
+		"include/CCommon.h",
+		"include/core.h",
+		"include/entry_point.h",
+		"include/log.h"
+	}
+
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 src = "%{prj.name}/src/"
@@ -22,8 +34,7 @@ project "common"
 
 
 	files {
-		src .. "**.cpp",
-		src .. "**.h"
+		src .. "**.cpp"
 	}
 
 	includedirs {
@@ -69,6 +80,14 @@ project "Sandbox"
 	files {
 		src .. "**.cpp",
 		src .. "**.h"
+	}
+
+	removefiles {
+		"include/application.h",
+		"include/CCommon.h",
+		"include/core.h",
+		"include/entry_point.h",
+		"include/log.h"
 	}
 
 	includedirs {

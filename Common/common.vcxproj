@@ -55,22 +55,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\binDebug-windows-x86_64\common\</OutDir>
-    <IntDir>..\bin-intDebug-windows-x86_64\common\</IntDir>
+    <OutDir>..\bin\Debug-windows-x86_64\common\</OutDir>
+    <IntDir>..\bin-int\Debug-windows-x86_64\common\</IntDir>
     <TargetName>common</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\binRelease-windows-x86_64\common\</OutDir>
-    <IntDir>..\bin-intRelease-windows-x86_64\common\</IntDir>
+    <OutDir>..\bin\Release-windows-x86_64\common\</OutDir>
+    <IntDir>..\bin-int\Release-windows-x86_64\common\</IntDir>
     <TargetName>common</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\binDist-windows-x86_64\common\</OutDir>
-    <IntDir>..\bin-intDist-windows-x86_64\common\</IntDir>
+    <OutDir>..\bin\Dist-windows-x86_64\common\</OutDir>
+    <IntDir>..\bin-int\Dist-windows-x86_64\common\</IntDir>
     <TargetName>common</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;CM_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -89,10 +89,10 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\binDebug-windows-x86_64\common\common.lib</ImportLibrary>
+      <ImportLibrary>..\bin\Debug-windows-x86_64\common\common.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\binDebug-windows-x86_64\common\common.dll ..\binDebug-windows-x86_64\Sandbox</Command>
+      <Command>copy /B /Y ..\bin\Debug-windows-x86_64\common\common.dll ..\binDebug-windows-x86_64\Sandbox</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -100,7 +100,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -114,10 +114,10 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <ImportLibrary>..\binRelease-windows-x86_64\common\common.lib</ImportLibrary>
+      <ImportLibrary>..\bin\Release-windows-x86_64\common\common.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\binRelease-windows-x86_64\common\common.dll ..\binRelease-windows-x86_64\Sandbox</Command>
+      <Command>copy /B /Y ..\bin\Release-windows-x86_64\common\common.dll ..\binRelease-windows-x86_64\Sandbox</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -125,7 +125,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>CM_PLATFORM_WINDOWS;CM_BUILD_DLL;DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;vendor\spdlog\included;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -135,22 +135,22 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ImportLibrary>..\binDist-windows-x86_64\common\common.lib</ImportLibrary>
+      <ImportLibrary>..\bin\Dist-windows-x86_64\common\common.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\binDist-windows-x86_64\common\common.dll ..\binDist-windows-x86_64\Sandbox</Command>
+      <Command>copy /B /Y ..\bin\Dist-windows-x86_64\common\common.dll ..\binDist-windows-x86_64\Sandbox</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\application.cpp" />
-    <ClCompile Include="src\log.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\include\application.h" />
     <ClInclude Include="..\include\CCommon.h" />
+    <ClInclude Include="..\include\application.h" />
     <ClInclude Include="..\include\core.h" />
     <ClInclude Include="..\include\entry_point.h" />
     <ClInclude Include="..\include\log.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\application.cpp" />
+    <ClCompile Include="src\log.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
