@@ -1,4 +1,4 @@
-workspace "Common Engine"
+workspace "common"
 	architecture "x64"
 	startproject "Sandbox"
 
@@ -44,9 +44,11 @@ project "common"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
+    cppdialect "C++17"
+    staticruntime "On"
+    systemversion "latest"
+    buildoptions { "/utf-8" }
+
 
 
 	defines {
@@ -55,8 +57,14 @@ project "common"
 	}
 	
 	postbuildcommands {
-		("{COPYFILE} %{cfg.buildtarget.relpath} ../bin" .. outputdir ..	"/Sandbox")
+    ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox/")
+}
+
+	prebuildcommands {
+	  ("{MKDIR} ../bin/" .. outputdir .. "/Sandbox")
 	}
+
+
 
 	filter "configurations:Debug"
 		defines "CM_DEBUG"
@@ -103,9 +111,10 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
-		systemversion "latest"
+    cppdialect "C++17"
+    staticruntime "On"
+    systemversion "latest"
+    buildoptions { "/utf-8" }
 
 
 	defines {
